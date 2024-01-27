@@ -1,4 +1,4 @@
-// from https://tailwindcss.com/docs/customizing-colors
+// slate colors from https://tailwindcss.com/docs/customizing-colors
 
 // light mode
 html[data-theme="light"] {
@@ -10,6 +10,9 @@ html[data-theme="light"] {
     --search-bg:      #d9d9d9;
     --search-bg-hover:#bebebe;
     --toggle-color:   #fff;
+    --title-color:    #CBD5E1;  // slate 300
+    --scroll-bar:
+    --scroll-bar-thumb:
 }
 // dark mode
 html[data-theme="dark"] {
@@ -18,9 +21,12 @@ html[data-theme="dark"] {
     --container-bg:     #1e293b;  // slate 800
     --header-bg:        #0f172a;  // slate 900
     --boxes-bg:         #334155;  // slate 700
-    --search-bg:        #020617;  //slate 950
+    --search-bg:        #020617;  // slate 950
     --search-bg-hover:  #090f2a;
     --toggle-color:     #030712;
+    --title-color:      #64748b;  // slate 500
+    --scroll-bar:
+    --scroll-bar-thumb:
 }
 
 // slate
