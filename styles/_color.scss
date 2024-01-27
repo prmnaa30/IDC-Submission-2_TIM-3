@@ -1,5 +1,37 @@
-// background color
-$slate100: #f1f5f9;
-$slate200: #E2E8F0;
+// from https://tailwindcss.com/docs/customizing-colors
 
-$slate400: #94a3b8;
+// light mode
+html[data-theme="light"] {
+    --body-bg:        #f8fafc;  //slate 50
+    --text-color:     #000;
+    --container-bg:   #E2E8F0;  // slate 200
+    --header-bg:      #94a3b8;  // slate 400
+    --boxes-bg:       #f1f5f9;  // slate 100
+    --search-bg:      #d9d9d9;
+    --search-bg-hover:#bebebe;
+    --toggle-color:   #fff;
+}
+// dark mode
+html[data-theme="dark"] {
+    --body-bg:          #000;
+    --text-color:       #f8fafc;  // slate 50
+    --container-bg:     #1e293b;  // slate 800
+    --header-bg:        #0f172a;  // slate 900
+    --boxes-bg:         #334155;  // slate 700
+    --search-bg:        #020617;  //slate 950
+    --search-bg-hover:  #090f2a;
+    --toggle-color:     #030712;
+}
+
+// slate
+// $slate50: #f8fafc;
+// $slate100: #f1f5f9;
+// $slate200: #E2E8F0;
+// $slate300: #cbd5e1;
+// $slate400: #94a3b8;
+// $slate500: #64748b;
+// $slate600: #475569;
+// $slate700: #334155;
+// $slate800: #1e293b;
+// $slate900: #0f172a;
+// $slate950: #020617;

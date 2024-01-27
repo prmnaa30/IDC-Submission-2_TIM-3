@@ -12,15 +12,17 @@
 
         <div class="header">
             <div class="header-content">
-                <img src="assets/svg/icon_.svg" alt="w.fsct">
+                <div class="logo">
+                    <img class="logo-light" src="assets/svg/icon_light.svg" alt="w.fsct">
+                    <img class="logo-dark hidden" src="assets/svg/icon_dark.svg" alt="w.fsct">
+                </div>
                 <div class="search-bar">
                     <input type="text" id="search-input" placeholder="Search city..."/>
                     <button id="search-button">Search</button>
                 </div>
                 <div class="darkmode-toggle">
                     <button class="mode_toggler">
-                        <img id="light-toggle" src="assets/svg/light-mode.svg">
-                        <img id="dark-toggle" style="display: none;" src="assets/svg/dark-mode.svg">
+                        <img id="mode-image" src="assets/svg/light-mode.svg">
                     </button>
                 </div>
             </div>
