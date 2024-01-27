@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
 <body>
 
     <div class="main-container">
+
         <div class="header">
             <div class="header-content">
                 <img src="assets/svg/icon_.svg" alt="w.fsct">
@@ -16,14 +17,15 @@
                     <input type="text" id="search-input" placeholder="Search city..."/>
                     <button id="search-button">Search</button>
                 </div>
-                <div class="dark-mode">
-                    <input type="checkbox" id="darkmode-toggle">
-                    <label for="darkmode-toggle">
-                        
-                    </label>
+                <div class="darkmode-toggle">
+                    <button class="mode_toggler">
+                        <img id="light-toggle" src="assets/svg/light-mode.svg">
+                        <img id="dark-toggle" style="display: none;" src="assets/svg/dark-mode.svg">
+                    </button>
                 </div>
             </div>
         </div>
+
         <div class="containers">
 
             <div class="box-1">
@@ -67,21 +69,11 @@
                     </div>
                 </div>
             </div> 
-
-            <div class="box-5">
-                <div class="boxes box-5_content">
-                    <div class="weather">
-                        <h1 id="temperature"></h1>
-                        <p id="weather-condition"></p>
-                        <p id="day-night-temp"></p>
-                    </div>
-                </div>
-            </div> 
             
         </div>  
    
     
 
-    <script src=""></script>
+    <script src="scripts/app.js"></script>
 </body>
 </html>
