@@ -1,9 +1,10 @@
-const BASE_URL = "http://128.199.167.159/v1/idc/weathers";
+
+const BASE_URL = "http://128.199.167.159/v1/idc";
 
 // READ Weather Data by ID
 export async function getWeatherById({ id = 1 }) {
   try {
-    const response = await fetch(`${BASE_URL}/${id}`, {
+    const response = await fetch(`${BASE_URL}/weather/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -19,29 +20,10 @@ export async function getWeatherById({ id = 1 }) {
   }
 }
 
-// READ Weather Data by City
-export async function getWeatherById({ id = 1 }) {
+// READ Weather Data All
+export async function getWeathers() {
   try {
-    const response = await fetch(`${BASE_URL}/${city}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const result = await response.json();
-
-    return result?.data;
-  } catch (error) {
-    console.error("Error Nih: ", {
-      error,
-    });
-  }
-}
-
-// READ Weather Data
-export async function getWEathers() {
-  try {
-    const response = await fetch(`${BASE_URL}`, {
+    const response = await fetch(`${BASE_URL}/weathers`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -58,9 +40,9 @@ export async function getWEathers() {
 }
 
 // CREATE Weather Data
-export async function createWeather({ payload }) {
+export async function createWeather({ payload = undefined }) {
   try {
-    const response = await fetch(`${BASE_URL}`, {
+    const response = await fetch(`${BASE_URL}/weather`, {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
@@ -69,7 +51,45 @@ export async function createWeather({ payload }) {
     });
 
     const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Error Nih: ", {
+      error,
+    });
+  }
+}
 
+// UPDATE Weather Data
+export async function updateWeatherById({ id = 1, payload = undefined }) {
+  try {
+    const response = await fetch(`${BASE_URL}/weather/${id}/edit`, {
+      method: "PUT",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Error Nih: ", {
+      error,
+    });
+  }
+}
+
+// DELETE Weather Data
+export async function deleteWeatherById({ id = 1 }) {
+  try {
+    const response = await fetch(`${BASE_URL}/weather/${id}/delete`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const result = await response.json();
     return result;
   } catch (error) {
     console.error("Error Nih: ", {

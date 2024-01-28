@@ -223,6 +223,7 @@ body {
 .containers .box-2 .weather_container .weather_items .left-part {
   display: flex;
   align-items: center;
+  gap: 5px;
 }
 .containers .box-3 .box-3_content {
   display: flex;
