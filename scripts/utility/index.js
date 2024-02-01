@@ -28,9 +28,14 @@ export const Icon = {
   `,
 };
 
-export function weatherImage(weatherCondition, imgsrc) {
-  switch (weatherCondition) {
-    case "Sunny":
-      ""
-  }
+export function weatherImageSrc(weatherCondition, imgDOM) {
+  const condition = weatherCondition.toLowerCase();
+  if (condition == "sunny") { imgDOM.src = "../assets/img/sunny.png"; }
+    else if (condition == "cloudy") { imgDOM.src = "../assets/img/cloudy.png"; }
+    else if (condition == "partly-cloudy") { imgDOM.src = "../assets/img/partly-cloudy.png"; }
+    else if (condition == "rainy") { imgDOM.src = "../assets/img/rainy.png"; }
+    else if (condition == "snowy") { imgDOM.src = "../assets/img/snowfall.png"; }
+    else if (condition == "windy") { imgDOM.src = "../assets/img/windy.png"; }
+    else if (condition == "thunderstorm") { imgDOM.src = "../assets/img/thunderstorm.png"; }
+    else if (condition == "stormy") { imgDOM.src = "../assets/img/stormy.png"; };
 }

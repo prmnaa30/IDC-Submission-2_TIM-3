@@ -1,5 +1,6 @@
-import { getWeatherById } from "./api.js";
-import { generateRandomNumber } from "./utility/index.js";    
+import { getWeatherById, getWeatherByName } from "./api.js";
+import { generateRandomNumber, weatherImageSrc } from "./utility/index.js";
+import moment from 'https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm';
 
 // Weather Data
 const city = document.getElementById("city-name");
@@ -20,31 +21,55 @@ const airQualVal = document.getElementById("air-quality-value");
 const uvIndex = document.getElementById("uv-index-value");
 const visibility = document.getElementById("visibility-value");
 
-// Generate random weather
+// Buttons, Input field
 const buttonRandom = document.getElementById("random-btn");
+const buttonCitySearch = document.getElementById("search-button");
+const inputCity = document.getElementById("search-input");
+
+/** innerHTML func */
+function innerHTMLvalue(api_response) {
+    city.innerHTML = api_response.city + ", ";
+    country.innerHTML = api_response.country;
+    temperature.innerHTML = api_response.temperature + "°";
+    weatherCondition.innerHTML = api_response.description;
+    weatherImageSrc(api_response.description, weatherImage);
+    feelsLike.innerHTML = api_response.feels_like + "°";
+    sunrise.innerHTML = moment.utc(api_response.sunrise).format("HH:mm");
+    sunset.innerHTML = moment.utc(api_response.sunset).format("HH:mm");
+    humidity.innerHTML = api_response.humidity;
+    windValue.innerHTML = api_response.wind_speed + " km/h | ";
+    windDegree.innerHTML = api_response.wind_degree + "°";
+    pressure.innerHTML = api_response.pressure + " mb";
+    precipitation.innerHTML = api_response.precipitation;
+    airQualVal.innerHTML = api_response.air_quality.category + " | ";
+    airQualIndex.innerHTML = api_response.air_quality.index;
+    uvIndex.innerHTML = api_response.uv_index;
+    visibility.innerHTML = api_response.visibility;
+};
+
 
 document.addEventListener("DOMContentLoaded", () => {
     city.innerHTML = "...";
-    country.innerHTML = "...";
+    // country.innerHTML = "...";
     temperature.innerHTML = "...";
     weatherCondition.innerHTML = "...";
-    weatherImage.setAttribute("src", "...");
     feelsLike.innerHTML = "...";
     sunrise.innerHTML = "...";
     sunset.innerHTML = "...";
     humidity.innerHTML = "...";
     windValue.innerHTML = "...";
-    windDegree.innerHTML = "...";
+    // windDegree.innerHTML = "...";
     pressure.innerHTML = "...";
     precipitation.innerHTML = "...";
+    // airQualVal.innerHTML = "...";
     airQualIndex.innerHTML = "...";
-    airQualVal.innerHTML = "...";
     uvIndex.innerHTML = "...";
     visibility.innerHTML = "...";
 
+    /** GET RANDOM WEATHER */
     buttonRandom.addEventListener("click", async () => {
         // Generate angka random dari fungsi generateRandomNumber
-        const generateNumber = 1;
+        const generateNumber = generateRandomNumber(1, 1);
 
         try {
             // Call API dengan id didapat dari fungsi generateNumber
@@ -52,28 +77,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!response) return;
 
-            city.innerHTML = response.city;
-            country.innerHTML = "...";
-            temperature.innerHTML = "...";
-            weatherCondition.innerHTML = "...";
-            weatherImage.setAttribute("src", "...");
-            feelsLike.innerHTML = "...";
-            sunrise.innerHTML = "...";
-            sunset.innerHTML = "...";
-            humidity.innerHTML = "...";
-            windValue.innerHTML = "...";
-            windDegree.innerHTML = "...";
-            pressure.innerHTML = "...";
-            precipitation.innerHTML = "...";
-            airQualIndex.innerHTML = "...";
-            airQualVal.innerHTML = "...";
-            uvIndex.innerHTML = "...";
-            visibility.innerHTML = "...";
+            innerHTMLvalue(response);
 
-            console.log(response);
+            console.log();
+        } catch (error) {
+            console.log("Error", { error });
+        }
+    });
+
+    /** GET WEATHER BY CITY */
+    buttonCitySearch.addEventListener("click", async () => {
+        const cityValue = inputCity.value;
+        
+        try {
+            const response = await getWeatherByName({ city: cityValue });
+
+            if (!response) return;
+
+            innerHTMLvalue(response);
+
         } catch (error) {
             console.log("Error", { error });
         }
     });
 });
-

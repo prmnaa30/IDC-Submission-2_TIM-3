@@ -20,6 +20,25 @@ export async function getWeatherById({ id = 1 }) {
   }
 }
 
+// READ Weather Data by city name
+export async function getWeatherByName({ city = "Singapore" }) {
+  try {
+    const response = await fetch(`${BASE_URL}/weather/${city}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await response.json();
+
+    return result?.data;
+  } catch (error) {
+    console.error("Error Nih: ", {
+      error,
+    });
+  }
+}
+
 // READ Weather Data All
 export async function getWeathers() {
   try {
