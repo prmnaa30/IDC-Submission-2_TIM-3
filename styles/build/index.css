@@ -37,6 +37,10 @@ html[data-theme=dark] {
   border: 1px solid red;
 }
 
+.filter-invert {
+  filter: invert(0.95);
+}
+
 body {
   font-family: "JetBrains Mono", monospace;
   background-color: var(--body-bg);
@@ -159,19 +163,20 @@ body {
   font-size: 12px;
 }
 .containers .box-1 .box-1_content {
-  padding: 20px;
+  padding: 20px 25px 25px 25px;
 }
 .containers .box-1 .box-1_content .weather {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 .containers .box-1 .box-1_content .weather .temp1-weatherCond h1 {
   font-size: 50px;
 }
 .containers .box-1 .box-1_content .weather #weather-image {
-  width: 125px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 .containers .box-2 .box-2_content {
   display: flex;

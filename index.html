@@ -17,8 +17,11 @@
                     <img class="logo-dark hidden" src="assets/svg/icon_dark.svg" alt="w.fsct">
                 </div>
                 <div class="search-bar">
-                    <input type="text" id="search-input" placeholder="Search city..."/>
+                    <input list="city-list" type="text" id="search-input" placeholder="Search city..."/>
                     <button id="search-button">Search</button>
+                    <datalist id="city-list">
+                        <option value="Singapore"></option>
+                    </datalist>
                 </div>
                 <div class="darkmode-toggle">
                     <button class="mode_toggler">
@@ -32,7 +35,7 @@
 
             <div class="box-1">
                 <div class="city-description">
-                    <p id="city-name"><span id="country-name"></span></p>
+                    <p><span id="city-name"></span><span id="country-name"></span></p>
                     <button id="random-btn">Random</button>
                 </div>
                 <div class="boxes">
@@ -40,10 +43,10 @@
                         
                         <div class="weather">
                             <div class="temp1-weatherCond">
-                                <h1 id="temperature">30°</h1>
-                                <p id="weather-condition">Cloudy</p>
+                                <h1 id="temperature"></h1>
+                                <p id="weather-condition"></p>
                             </div>
-                            <img id="weather-image" src="assets/img/cloudy-moon.png">
+                            <img id="weather-image" src="" alt="..."/>
                             
                         </div>
                         
@@ -59,18 +62,18 @@
                         <div class="feels-like">
                             <p class="">Feels Like</p>
                             <div id="weather-condition">
-                                <img src="assets/svg/termometer.svg" alt="termometer">
-                                <p id="feels-value">32°</p>
+                                <p><img src="assets/svg/termometer.svg" alt="termometer"></p>
+                                <p id="feels-value"></p>
                             </div>
                         </div>
                         <div class="sunrise-sunset">
                             <div id="sunrise" class="middle">
                                 <img src="assets/svg/sunrise.svg" alt="sunrise">
-                                <p id="sunrise-value">6:47 AM</p>
+                                <p id="sunrise-value"> AM</p>
                             </div>
                             <div id="sunset" class="middle">
                                 <img src="assets/svg/sunset.svg" alt="sunset">
-                                <p id="sunset-value">6:47 PM</p>
+                                <p id="sunset-value"> PM</p>
                             </div>
                         </div>
                         
@@ -83,7 +86,7 @@
                                 <p>Humidity</p>
                             </div>
                             <div class="right-part">
-                                <p id="humidity-value">80%</p>
+                                <p id="humidity-value"></p>
                                 
                             </div>
                         </div>
@@ -94,7 +97,8 @@
                                 <p>Wind</p>
                             </div>
                             <div class="right-part">
-                                <p id="wind-value">11km/h | <span id="wind-degree">90°</span></p>
+                                <span id="wind-value"></span>
+                                <span id="wind-degree"></span>
                             </div>
                         </div>
             
@@ -104,7 +108,7 @@
                                 <p>Pressure</p>
                             </div>
                             <div class="right-part">
-                                <p id="pressure-value">1013.0 mb</p>
+                                <p id="pressure-value"><span>mb</span></p>
                             </div>
                         </div>
 
@@ -114,7 +118,7 @@
                                 <p>Precipitation</p>
                             </div>
                             <div class="right-part">
-                                <p id="precipitation-value">0.5</p>
+                                <p id="precipitation-value"></p>
                             </div>
                         </div>
             
@@ -124,7 +128,8 @@
                                 <p>Air Quality</p>
                             </div>
                             <div class="right-part">
-                                <p id="air-quality-value">Moderate | <span id="air-quality-index">70</span></p>
+                                <span id="air-quality-value"></span>
+                                <span id="air-quality-index"></span>
                             </div>
                         </div>
 

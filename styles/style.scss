@@ -10,6 +10,9 @@
 .check {
     border: 1px solid red;
 }
+.filter-invert {
+    filter: invert(0.95);
+}
 
 body {
     font-family: 'JetBrains Mono', monospace;
@@ -146,11 +149,12 @@ body {
         }
 
         & .box-1_content {
-            padding: 20px;
+            padding: 20px 25px 25px 25px;
             
             & .weather {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 width: 100%;
                 
                 & .temp1-weatherCond {
@@ -160,8 +164,8 @@ body {
                 }
                 
                 & #weather-image {
-                    width: 125px;
-                    height: 100px;
+                    width: 80px;
+                    height: 80px;
                 }
             }   
         }
