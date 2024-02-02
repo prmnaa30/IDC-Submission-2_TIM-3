@@ -28,23 +28,23 @@ const inputCity = document.getElementById("search-input");
 
 /** innerHTML func */
 function innerHTMLvalue(api_response) {
-    city.innerHTML = api_response.city + ", ";
-    country.innerHTML = api_response.country;
-    temperature.innerHTML = api_response.temperature + "°";
-    weatherCondition.innerHTML = api_response.description;
-    weatherImageSrc(api_response.description, weatherImage);
-    feelsLike.innerHTML = api_response.feels_like + "°";
-    sunrise.innerHTML = moment.utc(api_response.sunrise).format("HH:mm");
-    sunset.innerHTML = moment.utc(api_response.sunset).format("HH:mm");
-    humidity.innerHTML = api_response.humidity;
-    windValue.innerHTML = api_response.wind_speed + " km/h | ";
-    windDegree.innerHTML = api_response.wind_degree + "°";
-    pressure.innerHTML = api_response.pressure + " mb";
-    precipitation.innerHTML = api_response.precipitation;
-    airQualVal.innerHTML = api_response.air_quality.category + " | ";
-    airQualIndex.innerHTML = api_response.air_quality.index;
-    uvIndex.innerHTML = api_response.uv_index;
-    visibility.innerHTML = api_response.visibility;
+    city.innerHTML = api_response?.city + ", ";
+    country.innerHTML = api_response?.country;
+    temperature.innerHTML = api_response?.temperature + "°";
+    weatherCondition.innerHTML = api_response?.description;
+    weatherImageSrc(api_response?.description, weatherImage);
+    feelsLike.innerHTML = api_response?.feels_like + "°";
+    sunrise.innerHTML = moment.utc(api_response?.sunrise).format("HH:mm");
+    sunset.innerHTML = moment.utc(api_response?.sunset).format("HH:mm");
+    humidity.innerHTML = api_response?.humidity;
+    windValue.innerHTML = api_response?.wind_speed + " km/h | ";
+    windDegree.innerHTML = api_response?.wind_degree + "°";
+    pressure.innerHTML = api_response?.pressure + " mb";
+    precipitation.innerHTML = api_response?.precipitation;
+    airQualVal.innerHTML = api_response?.air_quality.category + " | ";
+    airQualIndex.innerHTML = api_response?.air_quality.index;
+    uvIndex.innerHTML = api_response?.uv_index;
+    visibility.innerHTML = api_response?.visibility;
 };
 
 
@@ -65,21 +65,19 @@ document.addEventListener("DOMContentLoaded", () => {
     airQualIndex.innerHTML = "...";
     uvIndex.innerHTML = "...";
     visibility.innerHTML = "...";
-
-    /** GET RANDOM WEATHER */
+    
+    /** GET RANDOM WEATHER using Random Number */
     buttonRandom.addEventListener("click", async () => {
         // Generate angka random dari fungsi generateRandomNumber
         const generateNumber = generateRandomNumber(1, 1);
 
         try {
-            // Call API dengan id didapat dari fungsi generateNumber
-            const response = await getWeatherById({ id: generateNumber });
+            const result = await getWeatherById({ id: generateNumber });
 
-            if (!response) return;
+            if (!result) return;
 
-            innerHTMLvalue(response);
+            innerHTMLvalue(result);
 
-            console.log();
         } catch (error) {
             console.log("Error", { error });
         }
@@ -90,14 +88,68 @@ document.addEventListener("DOMContentLoaded", () => {
         const cityValue = inputCity.value;
         
         try {
-            const response = await getWeatherByName({ city: cityValue });
+            if (!cityValue) return;
+            
+            const result = await getWeatherByName({ city: cityValue });
 
-            if (!response) return;
+            if (!result) return;
 
-            innerHTMLvalue(response);
-
+            innerHTMLvalue(result);
         } catch (error) {
             console.log("Error", { error });
         }
     });
+
+    // async function getWeatherByName() {
+    //     try {
+    //         const weathers = await getWeathers();
+    //         const filteredCity = [...weathers];
+
+    //         if (!weathers) return;
+
+    //         inputCity.addEventListener("keyup", (e) => {
+    //             e.preventDefault();
+
+    //             const searchTerm = inputCity.value;
+    //             const filtered = filteredCity.filter(
+    //                 (weather) => 
+    //                     weather.city === (searchTerm)
+    //             );
+
+    //             getName(filtered);
+    //         });
+    //     } catch (error) {
+    //         console.log("Error", { error });
+    //     }
+    // }
+
+    // getWeatherByName();
+
+    // function getName(weathers) {
+    //     weathers.forEach(weather => {
+    //         buttonCitySearch.addEventListener("click", () => {
+    //             if (weather.id === null) {
+    //                 alert("lol")
+    //             } else {
+    //                 showWeather(weather.id);
+    //             }
+                
+    //         });
+    //     });
+    // };
+
+    // async function showWeather(id) {
+    //     try {
+    //         const result = await getWeatherById({ id });
+
+    //         if (!result) return;
+
+    //         innerHTMLvalue(result);
+
+    //     } catch (error) {
+    //         console.log("Error", { error });
+    //     }
+    // }
+
+    /**  */
 });
