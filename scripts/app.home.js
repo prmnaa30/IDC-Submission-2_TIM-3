@@ -1,6 +1,6 @@
 import { getWeatherById, getWeatherByName } from "./api.js";
 import { generateRandomNumber, weatherImageSrc } from "./utility/index.js";
-import moment from 'https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm';
+import moment from 'moment';
 
 // Weather Data
 const city = document.getElementById("city-name");
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         try {
             if (!cityValue) return;
-            
+
             const result = await getWeatherByName({ city: cityValue });
 
             if (!result) return;
