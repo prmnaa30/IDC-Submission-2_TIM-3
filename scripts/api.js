@@ -2,7 +2,7 @@
 const BASE_URL = "http://128.199.167.159/v1/idc";
 
 // READ Weather Data by ID
-export async function getWeatherById({ id = 1 }) {
+export async function getWeatherById({ id }) {
   try {
     const response = await fetch(`${BASE_URL}/weather/${id}`, {
       method: "GET",
@@ -20,8 +20,8 @@ export async function getWeatherById({ id = 1 }) {
   }
 }
 
-// READ Weather Data by city name
-export async function getWeatherByName({ city = "Singapore" }) {
+// READ Weather Data by City Name
+export async function getWeatherByName({ city }) {
   try {
     const response = await fetch(`${BASE_URL}/weather/${city}`, {
       method: "GET",
