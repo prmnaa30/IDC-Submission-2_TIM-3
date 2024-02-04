@@ -1,11 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather List, Add/Read/Delete</title>
+    <link rel="stylesheet" href="../styles/build/index.css">
 </head>
 <body>
-    
+    <div class="dashboard-container">
+
+        <div class="nav-bar">
+            <div class="logo">
+                <img class="logo-light" src="../assets/svg/icon_light.svg" alt="w.fsct">
+                <img class="logo-dark hidden" src="../assets/svg/icon_dark.svg" alt="w.fsct">
+            </div>
+            <div class="darkmode-toggle">
+                <button class="mode_toggler">
+                    <img id="mode-image" src="../assets/svg/light-mode.svg">
+                </button>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card-container-kiri">
+
+                <div class="card-header">
+                    <p>Add / Edit</p>
+                </div>
+
+                <div class="form-card">
+                    <!--  -->
+                    <div class="form-group">
+                        <input type="text" placeholder="Country" class="form-control">
+                        <input type="text" placeholder="City" class="form-control">
+                    </div>
+                    <!--  -->
+                    <div class="form-group">
+                        <input type="text" placeholder="Tempreature" class="form-control">
+                        <select name="descriptions" id="descriptions" class="form-control">
+                            <option value="" selected disabled>Description</option>
+                            <option value="Sunny">Sunny</option>
+                            <option value="Cloudy">Cloudy</option>
+                            <option value="Partly Cloudy">Partly Cloudy</option>
+                            <option value="Rainy">Rainy</option>
+                            <option value="Snowy">Snowy</option>
+                            <option value="Windy">Windy</option>
+                            <option value="Thunderstorm">Thunderstorm</option>
+                            <option value="Stormy">Stormy</option>
+                        </select>
+                        <input type="text" placeholder="Feels Like" class="form-control">
+                    </div>
+                    <!--  -->
+                    <div class="form-group">
+                        <input type="text" placeholder="Sunrise" class="form-control">
+                        <input type="text" placeholder="Sunset" class="form-control">
+                    </div>
+                    
+                    <!--  -->
+                    <div >
+                        <input type="text" placeholder="Humadity" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Wind Speed" class="form-control">
+                        <input type="text" placeholder="Wind Degree" class="form-control">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Pressure" class="form-control">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Preciption" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Air Quality Index" class="form-control">
+                        <input type="text" placeholder="Category" class="form-control">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="UV Index" class="form-control">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Visibility" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Latitude" class="form-control">
+                        <input type="text" placeholder="Long Latitude" class="form-control">
+                    </div>
+                    <button class="border-save">
+                        SAVE
+                    </button>
+                </div>
+
+                <a class="border-back" href="../index.html">Go Back</a>
+            </div>
+
+            <div class="card-container-kanan">
+                <div class="card-header">
+                    <p>Weather List</p>
+                </div>
+                <div class="card-weather-list">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/utility/dark-mode.js"></script>
 </body>
 </html>
