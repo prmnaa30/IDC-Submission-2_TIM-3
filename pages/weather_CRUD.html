@@ -31,13 +31,13 @@
                 <div class="form-card">
                     <!--  -->
                     <div class="form-group">
-                        <input type="text" placeholder="Country" class="form-control">
-                        <input type="text" placeholder="City" class="form-control">
+                        <input type="text" id="input-country" placeholder="Country" class="form-control">
+                        <input type="text" id="input-city" placeholder="City" class="form-control">
                     </div>
                     <!--  -->
                     <div class="form-group">
-                        <input type="text" placeholder="Tempreature" class="form-control">
-                        <select name="descriptions" id="descriptions" class="form-control">
+                        <input type="text" id="input-temperature" placeholder="Temperature" class="form-control">
+                        <select name="descriptions" id="input-description" class="form-control">
                             <option value="" selected disabled>Description</option>
                             <option value="Sunny">Sunny</option>
                             <option value="Cloudy">Cloudy</option>
@@ -48,41 +48,41 @@
                             <option value="Thunderstorm">Thunderstorm</option>
                             <option value="Stormy">Stormy</option>
                         </select>
-                        <input type="text" placeholder="Feels Like" class="form-control">
+                        <input type="text" id="input-feels_like" placeholder="Feels Like" class="form-control">
                     </div>
                     <!--  -->
                     <div class="form-group">
-                        <input type="text" placeholder="Sunrise" class="form-control">
-                        <input type="text" placeholder="Sunset" class="form-control">
+                        <input type="text" id="input-sunrise" placeholder="Sunrise" class="form-control">
+                        <input type="text" id="input-sunset" placeholder="Sunset" class="form-control">
                     </div>
                     
                     <!--  -->
                     <div >
-                        <input type="text" placeholder="Humadity" class="form-control">
+                        <input type="text" id="input-humidity" placeholder="Humidity" class="form-control">
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Wind Speed" class="form-control">
-                        <input type="text" placeholder="Wind Degree" class="form-control">
+                        <input type="text" id="input-windspd" placeholder="Wind Speed" class="form-control">
+                        <input type="text" id="input-winddgr" placeholder="Wind Degree" class="form-control">
                     </div>
                     <div>
-                        <input type="text" placeholder="Pressure" class="form-control">
+                        <input type="text" id="input-pressure" placeholder="Pressure" class="form-control">
                     </div>
                     <div>
-                        <input type="text" placeholder="Preciption" class="form-control">
+                        <input type="text" id="input-precipitation" placeholder="Precipitation" class="form-control">
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Air Quality Index" class="form-control">
-                        <input type="text" placeholder="Category" class="form-control">
+                        <input type="text" id="input-airql_index" placeholder="Air Quality Index" class="form-control">
+                        <input type="text" id="input-airql_ctg" placeholder="Category" class="form-control">
                     </div>
                     <div>
-                        <input type="text" placeholder="UV Index" class="form-control">
+                        <input type="text" id="input-uv_index" placeholder="UV Index" class="form-control">
                     </div>
                     <div>
-                        <input type="text" placeholder="Visibility" class="form-control">
+                        <input type="text" id="input-visibility" placeholder="Visibility" class="form-control">
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Latitude" class="form-control">
-                        <input type="text" placeholder="Long Latitude" class="form-control">
+                        <input type="text" id="input-latitude" placeholder="Latitude" class="form-control">
+                        <input type="text" id="input-longitude" placeholder="Long Latitude" class="form-control">
                     </div>
                     <button class="border-save">
                         SAVE
@@ -96,7 +96,7 @@
                 <div class="card-header">
                     <p>Weather List</p>
                 </div>
-                <div class="card-weather-list">
+                <div id="card-weather-list">
                     
                 </div>
             </div>
