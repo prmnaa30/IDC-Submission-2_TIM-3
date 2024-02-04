@@ -1,0 +1,20 @@
+@mixin form-group() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: 428px;
+}
+
+@mixin form-control($color) {
+    background-color: var($color);
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    width: 100%;
+    max-width: 428px;
+    color: rgb(109, 109, 109);
+    &::placeholder {
+        color: rgb(109, 109, 109);
+    }
+}
