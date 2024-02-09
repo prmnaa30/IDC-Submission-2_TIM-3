@@ -3,19 +3,33 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    max-width: 428px;
+    max-width: 500px;
 }
 
 @mixin form-control($color) {
     background-color: var($color);
+    display: flex;
+    align-items: center;
+    gap: 5px;
     padding: 8px;
     border-radius: 8px;
-    border: none;
     width: 100%;
-    max-width: 428px;
+    max-width: 500px;
     height: 32px;
-    color: rgb(109, 109, 109);
-    &::placeholder {
+   
+    & label {
+        font: 14px sans-serif;
+        color: rgb(109, 109, 109);
+    }
+    & input, select {
+        height: 32px;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        width: 100%;
+        font: 14px sans-serif;
+    }
+    & select:required:invalid {
         color: rgb(109, 109, 109);
     }
 }
