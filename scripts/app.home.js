@@ -1,4 +1,4 @@
-import { getWeatherById, getWeatherByName } from "./api.js";
+import { getWeatherById, getWeatherByName, getWeathers } from "./api.js";
 import { generateRandomNumber, weatherImageSrc } from "./utility/index.js";
 import moment from 'https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm';
 
@@ -69,7 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
     /** GET RANDOM WEATHER using Random Number */
     buttonRandom.addEventListener("click", async () => {
         // Generate angka random dari fungsi generateRandomNumber
-        const generateNumber = generateRandomNumber(1, 1);
+        const apiObjects = await getWeathers();
+        const apiObjectLength = apiObjects.length;
+        const generateNumber = generateRandomNumber(1, apiObjectLength);
 
         try {
             const result = await getWeatherById({ id: generateNumber });
