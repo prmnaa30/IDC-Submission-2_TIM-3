@@ -6,15 +6,14 @@ import {
     deleteWeatherById,
     updateWeatherById
 } from '../scripts/api.js';
-
-const weatherList = document.getElementById("card-weather-list");
+import moment from 'https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm';
 
 /**
  * mengambil input dari html
  */
-const inputCountry = document.getElementById("input-country;");
-const inputCity = document.getElementById("input-city;");
-const inputTemperature = document.getElementById("input-temperature;");
+const inputCountry = document.getElementById("input-country");
+const inputCity = document.getElementById("input-city");
+const inputTemperature = document.getElementById("input-temperature");
 const inputDescription = document.getElementById("input-description");
 const inputFeels = document.getElementById("input-feels_like");
 const inputSunrise = document.getElementById("input-sunrise");
@@ -31,6 +30,7 @@ const inputVisibility = document.getElementById("input-visibility");
 const inputLatitude = document.getElementById("input-latitude");
 const inputLongitude = document.getElementById("input-longitude");
 
+const submitButton = document.getElementById("button-submit");
 
 const inputSearch = document.getElementById("form-search");
 
@@ -41,62 +41,177 @@ const weatherListContainer = document.getElementById("card-weather-list");
 
 document.addEventListener("DOMContentLoaded", () => {
     /*====={ BERIKUT ADALAH CODE UNTUK MENAMBAHKAN WEATHER KE API }=====*/
+    async function handleAddWeather(payload) {
+        try {
+          /**
+           * Kita akan panggil fungsi createWeather yang sudah kita buat di file `api.js`
+           * Lalu kita akan kirim payload ke dalam fungsi tersebut
+           */
+          const result = await createWeather({ payload: payload });
+    
+          /**
+           * Kita lakukan pengecekan jika ketika respon kode yang diberikan itu 201 (Created)
+           * Maka munculkan alert "Berhasil menambahkan data", kosongkan inputan dan reload halaman
+           */
+    
+          if (result?.code === 201) {
+            alert("Berhasil menambahkan data");
+    
+          inputCountry.value = "";
+          inputCity.value = "";
+          inputTemperature.value = "";
+          inputDescription.value = "";
+          inputFeels.value = "";
+          inputSunrise.value = "";
+          inputSunset.value = "";
+          inputHumidity.value = "";
+          inputWindSpd.value = "";
+          inputWindDgr.value = "";
+          inputPressure.value = "";
+          inputPrecipitation.value = "";
+          inputAirQlIndex.value = "";
+          inputAirQlCateg.value = "";
+          inputUvIndex.value = "";
+          inputVisibility.value = "";
+          inputLatitude.value = "";
+          inputLongitude.value = "";
+    
+            window.location.reload();
+          }
+        } catch (error) {
+          console.error("Error ngirim Nih: ", {
+            error,
+          });
+        }
+      }
+    
+      // Fungsi untuk mengupdate data
+      async function handleUpdateWeatherById(id, payload) {
+        try {
+          const result = await updateWeatherById({ id, payload });
+    
+          if (!result) return;
+    
+          if (result?.code === 200) {
+            alert("Berhasil mengupdate data");
+    
+            window.location.reload();
+          }
+        } catch (error) {
+          console.error("Error ngirim Nih: ", {
+            error,
+          });
+        }
+      }
+    
+    
     // Fungsi ketika tombol submit di klik maka akan mengirim data ke API untuk ditambahkan
+    submitButton.addEventListener("click", async (e) => {
+        try {
+          e.preventDefault();
 
-    // submitButton.addEventListener("click", async (e) => {
-    //     /**
-    //      * e.preventDefault() adalah untuk mencegah
-    //      * form mengirim data ke halaman lain
-    //      */
-    //     e.preventDefault();
-    
-    //     /**
-    //      * Kita akan mengambil data dari inputan
-    //      * Lalu value inputan tersebut akan kita masukkan ke dalam objek payload
-    //     */
-    //     const payload = {
-    //         question: inputQuestion?.value || "",
-    //         category: inputCategory?.value || "",
-    //         language: inputLanguage?.value || "",
-    //         answer: inputAnswer?.value || "",
-    //     };
-    
-    //     if (inputId.value === "") {
-    //         handleAddQuestion(payload);
-    //     } else {
-    //         handleUpdateQuestionById(inputId.value, payload);
-    //     }
-    // });
-    
+          const currentDateTime = moment();
+          const formattedDate = currentDateTime.format("YYYY-MM-DD");
+      
+          /**
+            * Kita akan mengambil data dari inputan
+            * Lalu value inputan tersebut akan kita masukkan ke dalam objek payload
+          */
+          const payload = {
+            country: inputCountry?.value || "",
+            city: inputCity?.value || "",
+            temperature: inputTemperature?.value || "",
+            description: inputDescription?.value || "",
+            feels_like: inputFeels?.value || "",
+            sunrise: `${formattedDate}T${inputSunrise?.value}:00.000Z` || "",
+            sunset: `${formattedDate}T${inputSunset?.value}:00.000Z` || "",
+            humidity: inputHumidity?.value || "",
+            wind_speed: inputWindSpd?.value || "",
+            wind_degree: inputWindDgr?.value || "",
+            pressure: inputPressure?.value || "",
+            precipitation: inputPrecipitation?.value || "",
+            air_quality:{
+                index: inputAirQlIndex?.value || "",
+                category: inputAirQlCateg?.value || ""
+            },
+            uv_index: inputUvIndex?.value || "",
+            visibility: inputVisibility?.value || "",
+            location:{
+                latitude: inputLatitude?.value || "",
+                longitude: inputLongitude?.value || "",
+            },
+          };
+      
+          if (inputId.value === "") {
+            // Panggil fungsi untuk menambahkan data cuaca
+            handleAddWeather(payload);
+          } else {
+            // Panggil fungsi untuk mengupdate data cuaca berdasarkan ID
+            handleUpdateWeatherById(inputId.value, payload);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      });
     /*====={ BERIKUT ADALAH CODE UNTUK MENGEDIT WEATHER }=====*/
     // Fungsi untuk menampilkan data berdasarkan id
-    async function handleShowQuestionById(id) {
+    async function handleShowWeatherById(id) {
         try {
-            const result = await getQuestionById({ id });
-        
-            if (!result) return;
-        
-            inputQuestion.value = result?.question;
-            inputAnswer.value = result?.answer;
-            inputCategory.value = result?.category;
-            inputLanguage.value = result?.language;
-            inputId.value = result?.id;
-        
-            // submitButton.classList.remove("button-submit");
-            // submitButton.classList.add("button-submit-edit");
-        
-            // submitButton.innerText = "Update";
+          const result = await getWeatherById({ id });
+    
+          if (!result) return;
+    
+          inputCountry.value = result?.country;
+          inputCity.value = result?.city;
+          inputTemperature.value = result?.temperature;
+          inputDescription.value = result?.description;
+          inputFeels.value = result?.feels_like;
+          inputSunrise.value = moment.utc(result?.sunrise).format("HH:mm");
+          inputSunset.value = moment.utc(result?.sunset).format("HH:mm");
+          inputHumidity.value = result?.humidity;
+          inputWindSpd.value = result?.wind_speed;
+          inputWindDgr.value = result?.wind_degree;
+          inputPressure.value = result?.pressure;
+          inputPrecipitation.value = result?.precipitation;
+          inputAirQlIndex.value = result?.air_quality.index;
+          inputAirQlCateg.value = result?.air_quality.category;
+          inputUvIndex.value = result?.uv_index;
+          inputVisibility.value = result?.visibility;
+          inputLatitude.value = result?.location.latitude;
+          inputLongitude.value = result?.location.longitude;
+          inputId.value = result?.id;
+    
+          submitButton.classList.remove("button-submit");
+          submitButton.classList.add("button-submit-edit");
+    
+          submitButton.innerText = "Update";
         } catch (error) {
-            console.error("Error ngirim Nih: ", {
+          console.error("Error ngirim Nih: ", {
             error,
-            });
+          });
         }
-    }
+      }
     
     /*====={ BERIKUT ADALAH CODE UNTUK MENGHAPUS WEATHER }=====*/
+    async function handleDeleteWeather(id) {
+        try {
+          const result = await deleteWeatherById({ id });
+    
+          if (!result) return;
+    
+          if (result?.code === 200) {
+            alert("Berhasil menghapus data");
+    
+            window.location.reload();
+          }
+        } catch (error) {
+          console.error("Error ngirim Nih: ", {
+            error,
+          });
+        }
+      }
     
     /*====={ BERIKUT ADALAH CODE UNTUK MENAMPILKAN LIST WEATHER }=====*/
-    
     async function handleAllWeather() {
         try {
             // mengambil semua data
@@ -164,11 +279,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 elementHTML: Icon.update,
             });
         
-            // Ketika tombol edit di klik maka akan menjalankan fungsi handleShowQuestionById
+            // Ketika tombol edit di klik maka akan menjalankan fungsi handleShowWeatherById
             buttonEdit.addEventListener("click", async (e) => {
                 e.preventDefault();
             
-                handleShowQuestionById(question.id);
+                handleShowWeatherById(data.id);
             });
         
             // Buat element button untuk delete
@@ -183,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
             buttonDelete.addEventListener("click", async (e) => {
                 e.preventDefault();
             
-                handleDeleteQuestion(question.id);
+                handleDeleteWeather(data.id);
             });
         
             sectionLeftWeather.append(...[weatherCity,weatherCountry]);
