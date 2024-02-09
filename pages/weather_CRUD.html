@@ -31,64 +31,107 @@
                 <div class="form-card">
                     <!--  -->
                     <div class="form-group">
-                        <input type="text" id="input-country" placeholder="Country" class="form-control">
-                        <input type="text" id="input-city" placeholder="City" class="form-control">
+                        <div class="form-control">
+                            <label for="input-country">Country: </label>
+                            <input type="text" id="input-country">
+                        </div>
+                        <div class="form-control">
+                            <label for="input-city">City: </label>
+                            <input type="text" id="input-city">
+                        </div>
+                        
                     </div>
                     <!--  -->
                     <div class="form-group">
-                        <input type="text" id="input-temperature" placeholder="Temperature" class="form-control">
-                        <select name="descriptions" id="input-description" class="form-control">
-                            <option value="" selected disabled>Description</option>
-                            <option value="Sunny">Sunny</option>
-                            <option value="Cloudy">Cloudy</option>
-                            <option value="Partly Cloudy">Partly Cloudy</option>
-                            <option value="Rainy">Rainy</option>
-                            <option value="Snowy">Snowy</option>
-                            <option value="Windy">Windy</option>
-                            <option value="Thunderstorm">Thunderstorm</option>
-                            <option value="Stormy">Stormy</option>
-                        </select>
-                        <input type="text" id="input-feels_like" placeholder="Feels Like" class="form-control">
+                        <div class="form-control">
+                            <label for="input-temperature">Temperature:</label>
+                            <input type="number" id="input-temperature">
+                        </div>
+                        <div class="form-control">
+                            <select name="descriptions" id="input-description" required>
+                                <option value="" selected disabled>Description</option>
+                                <option value="Sunny">Sunny</option>
+                                <option value="Cloudy">Cloudy</option>
+                                <option value="Partly Cloudy">Partly Cloudy</option>
+                                <option value="Rainy">Rainy</option>
+                                <option value="Snowy">Snowy</option>
+                                <option value="Windy">Windy</option>
+                                <option value="Thunderstorm">Thunderstorm</option>
+                                <option value="Stormy">Stormy</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <label for="input-feels_like">Feels&nbsp;Like: </label>
+                            <input type="number" id="input-feels_like">
+                        </div>
                     </div>
                     <!--  -->
                     <div class="form-group">
-                        <input type="time" id="input-sunrise" class="form-control time-placeholder sunrise">
-                        <input type="time" id="input-sunset" class="form-control time-placeholder sunset">
+                        <div class="form-control">
+                            <label for="input-sunrise"></label>
+                            <input type="time" id="input-sunrise" class="time-placeholder sunrise">
+                        </div>
+                        <div class="form-control">
+                            <label for="input-sunset"></label>
+                            <input type="time" id="input-sunset" class="time-placeholder sunset">
+                        </div>
                     </div>
-                    
                     <!--  -->
-                    <div >
-                        <input type="text" id="input-humidity" placeholder="Humidity" class="form-control">
+                    <div class="form-control">
+                        <label for="input-humidity">Humidity:</label>
+                        <input type="text" id="input-humidity">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="input-windspd" placeholder="Wind Speed" class="form-control">
-                        <input type="text" id="input-winddgr" placeholder="Wind Degree" class="form-control">
+                        <div class="form-control">
+                            <label for="input-windspd">Wind&nbsp;Speed:</label>
+                            <input type="number" id="input-windspd">
+                        </div>
+                        <div class="form-control">
+                            <label for="input-winddgr">Wind&nbsp;Degree:</label>
+                            <input type="number" id="input-winddgr">
+                        </div>
                     </div>
-                    <div>
-                        <input type="text" id="input-pressure" placeholder="Pressure" class="form-control">
+                    <div class="form-control">
+                        <label for="input-pressure">Pressure:</label>
+                        <input type="text" id="input-pressure">
                     </div>
-                    <div>
-                        <input type="text" id="input-precipitation" placeholder="Precipitation" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="input-airql_index" placeholder="Air Quality Index" class="form-control">
-                        <input type="text" id="input-airql_ctg" placeholder="Category" class="form-control">
-                    </div>
-                    <div>
-                        <input type="text" id="input-uv_index" placeholder="UV Index" class="form-control">
-                    </div>
-                    <div>
-                        <input type="text" id="input-visibility" placeholder="Visibility" class="form-control">
+                    <div class="form-control">
+                        <label for="input-precipitation">Precipitation:</label>
+                        <input type="text" id="input-precipitation">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="input-latitude" placeholder="Latitude" class="form-control">
-                        <input type="text" id="input-longitude" placeholder="Long Latitude" class="form-control">
+                        <div class="form-control">
+                            <label for="input-airql_index">Air&nbsp;Quality&nbsp;Index:</label>
+                            <input type="number" id="input-airql_index">
+                        </div>
+                        <div class="form-control">
+                            <label for="input-airql_ctg">Category:</label>
+                            <input type="text" id="input-airql_ctg">
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label for="input-uv_index">UV&nbsp;Index:</label>
+                        <input type="number" id="input-uv_index">
+                    </div>
+                    <div class="form-control">
+                        <label for="input-visibility">Visibility:</label>
+                        <input type="number" id="input-visibility">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-control">
+                            <label for="input-latitude">Latitude:</label>
+                            <input type="text" id="input-latitude">
+                        </div>
+                        <div class="form-control">
+                            <label for="input-latitude">Long&nbsp;Latitude: </label>
+                            <input type="text" id="input-longitude">
+                        </div>
                     </div>
 
                     <input type="text" id="form-id" class="form-id" readonly>
 
-                    <button class="border-save">
-                        SAVE
+                    <button class="border-save" id="button-submit">
+                        ADD
                     </button>
                 </div>
 
