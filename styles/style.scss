@@ -11,14 +11,40 @@
 .check {
     border: 1px solid red;
 }
-.filter-invert {
-    filter: invert(0.95);
-}
 
 body {
     font-family: 'JetBrains Mono', monospace;
     background-color: var(--body-bg);
     color: var(--text-color);
+    &::-webkit-scrollbar {
+        background-color: var(--scroll-bar);
+        width: 15px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--scroll-bar-thumb);
+    }
+}
+
+// darkmode toggle
+.darkmode-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--search-bg);
+    margin-right: 3px;
+
+    & #mode_toggler {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        border-radius: 50px;
+        border: none;
+        background-color: var(--toggle-color);
+        cursor: pointer;
+    }
 }
 
 .main-container {
@@ -71,37 +97,8 @@ body {
             position: relative;
             width: 58px;
             height: 41px;
-
-            & img {
-                position: absolute;
-                opacity: 1;
-
-                &.hidden {
-                    opacity: 0;
-                }
-            }
         }
 
-        & .darkmode-toggle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--search-bg);
-            margin-right: 3px;
-
-            & .mode_toggler {
-                position: relative;
-                width: 32px;
-                height: 32px;
-                border-radius: 50px;
-                border: none;
-                background-color: var(--toggle-color);
-                cursor: pointer;
-            }
-        }
     }
 }
 
@@ -280,36 +277,6 @@ body {
             position: relative;
             width: 58px;
             height: 41px;
-
-            & img {
-                position: absolute;
-                opacity: 1;
-
-                &.hidden {
-                    opacity: 0;
-                }
-            }
-        }
-
-        & .darkmode-toggle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--search-bg);
-            margin-right: 3px;
-
-            & .mode_toggler {
-                position: relative;
-                width: 32px;
-                height: 32px;
-                border-radius: 50px;
-                border: none;
-                background-color: var(--toggle-color);
-                cursor: pointer;
-            }
         }
     }
     
@@ -350,16 +317,16 @@ body {
 
                 & .form-group {
                     @include form-group();
-                    & .time-placeholder::before {
-                        font-family: sans-serif;
-                        margin-right:.6em;
-                        color: rgb(109, 109, 109);
+                    & .time-placeholder {
+                        margin-left: -5px;
                     }
-                    & .sunrise::before { content: "Sunrise:"; }
-                    & .sunset::before { content: "Sunset:"; }
                 }
                 & .form-control {
-                    @include form-control(--search-bg);
+                    @include form-control(
+                        $bgcolor: --input-bgcolor,
+                        $inp-color: --text-color,
+                        $label-color: --label-color
+                    );
                 }
                 & .form-id {
                     display: none;
@@ -411,14 +378,20 @@ body {
                 padding: 8px;
                 overflow-y: scroll;
                 height: 100%;
-                max-height: 620px;
-                min-height: 600px;
+                max-height: 600px;
+                min-height: 580px;
+                
+                &::-webkit-scrollbar {
+                    width: 0px;
+                }
             }
 
             & .section {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 box-shadow: 0 2px 2px rgba(0, 0, 0, 0.177);
+                background-color: var(--weatherlist-bg);
                 margin: 20px;
                 padding: 10px;
                 border-radius: 10px;
@@ -439,8 +412,7 @@ body {
                 & p {
                     font-size: 14px;
                     font-weight: 800;
-                    color: #111;
-                    // width: 240px;
+                    color: var(--text-color);
                 }
             }
 
