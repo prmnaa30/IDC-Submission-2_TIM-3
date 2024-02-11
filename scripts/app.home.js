@@ -118,6 +118,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!result) return;
 
             innerHTMLvalue(result);
+
+            setTimeout(() => {
+                inputCity.value = "";
+            }, 100);
         } catch (error) {
             console.log("Error", { error });
         }
