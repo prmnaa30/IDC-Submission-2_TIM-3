@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" onload="checkTheme();">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,7 @@
         <div class="header">
             <div class="header-content">
                 <div class="logo">
-                    <img class="logo-light" src="assets/svg/icon_light.svg" alt="w.fsct">
-                    <img class="logo-dark hidden" src="assets/svg/icon_dark.svg" alt="w.fsct">
+                    <img id="logo-image" src="assets/svg/logo_light.svg" alt="w.fsct">
                 </div>
                 <div class="search-bar">
                     <input list="city-list" id="search-input" placeholder="Search city..."/>
@@ -25,7 +24,7 @@
                     </datalist>
                 </div>
                 <div class="darkmode-toggle">
-                    <button class="mode_toggler">
+                    <button id="mode_toggler">
                         <img id="mode-image" src="assets/svg/light-mode.svg">
                     </button>
                 </div>
