@@ -1,6 +1,6 @@
 // slate colors from https://tailwindcss.com/docs/customizing-colors
 
-// light mode
+/** light mode */
 html[data-theme="light"] {
     --body-bg:        #f8fafc;  //slate 50
     --text-color:     #000;
@@ -11,23 +11,36 @@ html[data-theme="light"] {
     --search-bg-hover:#bebebe;
     --toggle-color:   #fff;
     --title-color:    #CBD5E1;  // slate 300
-    --input-color:    
-    --scroll-bar:
-    --scroll-bar-thumb: 
+
+    // input colors
+    --input-bgcolor:  #d8d8d8;
+    --label-color:    #6D6D6D;
+
+    --weatherlist-bg: #e5e7eb;
+
+    --scroll-bar: #d1d5db;
+    --scroll-bar-thumb: #9ca3af;
 }
-// dark mode
+/** dark mode */
 html[data-theme="dark"] {
     --body-bg:          #000;
     --text-color:       #f8fafc;  // slate 50
     --container-bg:     #1e293b;  // slate 800
     --header-bg:        #475569;  // slate 600
     --boxes-bg:         #334155;  // slate 700
-    --search-bg:        #020617;  // slate 950
-    --search-bg-hover:  #090f2a;
+    --search-bg:        #161b26;
+    --search-bg-hover:  #0e1219;
     --toggle-color:     #030712;
     --title-color:      #64748b;  // slate 500
-    --scroll-bar:
-    --scroll-bar-thumb:
+
+    // input colors
+    --input-bgcolor:    #1e293b;  // slate 800
+    --label-color:      #B3B3B3;
+
+    --weatherlist-bg: #566578;
+
+    --scroll-bar: #1f2937;
+    --scroll-bar-thumb: #4b5563;
 }
 
 // slate
