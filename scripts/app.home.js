@@ -1,5 +1,5 @@
 import { getWeatherById, getWeatherByName, getWeathers } from "./api.js";
-import { generateRandomNumber, weatherImageSrc } from "./utility/index.js";
+import { generateRandomNumber, weatherImageSrc, generateElement } from "./utility/index.js";
 import moment from 'https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm';
 
 // Weather Data
@@ -20,6 +20,9 @@ const airQualIndex = document.getElementById("air-quality-index");
 const airQualVal = document.getElementById("air-quality-value");
 const uvIndex = document.getElementById("uv-index-value");
 const visibility = document.getElementById("visibility-value");
+
+// search bar
+const citySearchList = document.getElementById("city-search-list");
 
 // Buttons, Input field
 const buttonRandom = document.getElementById("random-btn");
@@ -65,6 +68,24 @@ document.addEventListener("DOMContentLoaded", () => {
     airQualIndex.innerHTML = "...";
     uvIndex.innerHTML = "...";
     visibility.innerHTML = "...";
+
+    /** Tambahkan suggestions pada search bar */
+    async function renderSearchSuggestions() {
+        try {
+            const cityArr = await getWeathers();
+
+            cityArr.forEach(cityobj => {
+                const newList = document.createElement('option');
+                newList.value = cityobj.city;
+                citySearchList.appendChild(newList);
+            });
+
+        } catch (error) {
+            console.log("Error", { error });
+        }
+    }
+    renderSearchSuggestions();
+    
     
     /** GET RANDOM WEATHER using Random Number */
     buttonRandom.addEventListener("click", async () => {
