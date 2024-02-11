@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
           submitButton.classList.remove("button-submit");
           submitButton.classList.add("button-submit-edit");
     
-          submitButton.innerText = "Update";
+          submitButton.innerText = "UPDATE";
         } catch (error) {
           console.error("Error ngirim Nih: ", {
             error,
@@ -298,7 +298,10 @@ document.addEventListener("DOMContentLoaded", () => {
             buttonDelete.addEventListener("click", async (e) => {
                 e.preventDefault();
             
-                handleDeleteWeather(data.id);
+                if (confirm("Yakin untuk menghapus data?") == true) {
+                  handleDeleteWeather(data.id);
+                } else { return; }
+                
             });
         
             sectionLeftWeather.append(...[weatherCity,weatherCountry]);
