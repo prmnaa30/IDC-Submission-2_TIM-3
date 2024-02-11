@@ -6,8 +6,8 @@
     max-width: 500px;
 }
 
-@mixin form-control($color) {
-    background-color: var($color);
+@mixin form-control($bgcolor, $inp-color, $label-color) {
+    background-color: var($bgcolor);
     display: flex;
     align-items: center;
     gap: 5px;
@@ -19,7 +19,7 @@
    
     & label {
         font: 14px sans-serif;
-        color: rgb(109, 109, 109);
+        color: var($label-color);
     }
     & input, select {
         height: 32px;
@@ -28,9 +28,10 @@
         background-color: transparent;
         width: 100%;
         font: 14px sans-serif;
+        color: var($inp-color);
     }
     & select:required:invalid {
-        color: rgb(109, 109, 109);
+        color: var($label-color);
     }
 }
 
